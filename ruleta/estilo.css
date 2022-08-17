@@ -1,0 +1,191 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+body{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    height: 100vh;
+    overflow: hidden ;
+    background:url(./imagenes/fondo4.jpeg);
+    background-size: cover;
+    background-position: center;
+}
+
+.mainbox{
+    position: relative;
+    width: 500px;
+    height: 500px;
+    margin-top: 50px;
+}
+.mainbox:after{
+        position: absolute;
+        content: "";
+        width: 110%;
+        height: 110%;
+        background: url(./imagenes/flecha2.png) no-repeat;
+        background-size: 10%;
+        left: -5%;
+        top: 45%;
+        transform: rotate(360deg);
+}
+.box{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 50%;
+    border: 2px solid rgb(3, 3, 3);
+    overflow: hidden;
+    transition: all ease-in-out 5s;
+    transform: rotate(90deg);
+}
+span {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    position: absolute;
+}
+.span1{
+ 
+    clip-path: polygon(0 17%, 0 50%, 50% 50%);
+    background-color: #aaa;
+}
+.span2{
+    clip-path: polygon(0 17%, 30% 0, 50% 50%);
+    background-color: #fff;
+}
+.span3{
+    clip-path: polygon(30% 0, 71% 0%, 50% 50%);
+    background-color:antiquewhite;
+}
+.span4{
+    clip-path: polygon(71% 0, 100% 18%, 50% 50%);
+    background-color: rgb(255, 96, 96);
+}
+.span5{
+    clip-path: polygon(100% 18%, 100% 50%, 50% 50%);
+    background-color: rgb(96, 152, 255);
+}
+.box2 .span3{
+    background-color: bisque;
+}
+
+.box2{
+    width: 100%;
+    height: 100%;
+    transform: rotate(180deg);
+}
+.box2 .sapn1{
+    background: #333;
+}
+.font{
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+}
+.box1 .span1 h5{
+    position: absolute;
+    top:40%;
+    right: 58%;
+    transform: rotate(200deg);
+    text-align:center;
+}
+.box1 .span2 h5{
+    position: absolute;
+    top:30%;
+    right: 53%;
+    transform: rotate(-130deg);
+    text-align:center;
+}
+.box1 .span3 h5{
+    position: absolute;
+    top:18%;
+    right: 31%;
+    transform: rotate(-90deg);
+    text-align:center;
+}
+.box1 .span4 h5{
+    position: absolute;
+    top:25%;
+    right: 16%;
+    transform: rotate(-45deg);
+    text-align:center;
+}
+.box1 .span5 h5{
+    position: absolute;
+    top:39%;
+    right: 6%;
+    transform: rotate(-15deg);
+    text-align:center;
+}
+.box2 .span1 h5{
+    font-size:33px ;
+    position: absolute;
+    top:37%;
+    right: 60%;
+    transform: rotate(-340deg);
+    text-align:center;
+}
+.box2 .span2 h5{
+    position: absolute;
+    top:24%;
+    right: 48%;
+    transform: rotate(-310deg);
+    text-align:center;
+}
+.box2 .span3 h5{
+    position: absolute;
+    top:20%;
+    right: 32%;
+    transform: rotate(450deg);
+    text-align:center;
+}
+.box2 .span4 h5{
+    position: absolute;
+    top:27%;
+    right: 15%;
+    transform: rotate(490deg);
+    text-align:center;
+}
+.box2 .span5 h5{
+    position: absolute;
+    top:40%;
+    right: 8%;
+    transform: rotate(520deg);
+    text-align:center;
+}
+.girar{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background: #aaa;
+    color: rgb(0, 0, 0);
+    box-shadow: 0 5px 20px rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    z-index: 1000;
+}
+.girar:active{
+    width: 70px;
+    height: 70px;
+    font-size: 10px;
+}
+.mainbox.animate::after{
+    animation: animateflecha 0.7s ease infinite;
+}
+audio{
+    display: none;
+}
+@keyframes animateflecha{
+    50%{
+        rigth:-50px;
+    }
+}

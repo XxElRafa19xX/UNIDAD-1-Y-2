@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego sobre mi</title>
+</head>
+<body>
+    <h2 id="preg"></h2>
+	<input type="text" id="dato">
+	<button id="boton">Siguiente Pregunta</button>
+	<p id="resolucion"></p>
+
+	<script>
+		
+		var preguntas = [																			
+				['¿Cómo se llama la mascota de Rafael?', 'orejas'],        
+				['¿Cuantos años tiene Rafael', '19'],															
+				['¿Cuando es el cumpleaños de Rafael?', '29 de septiembre'],               
+				['¿Que deporte le gusta a Rafael?', 'futbol'],									
+				['¿En que escuela estudia Rafael?', 'en universidad politecnica de tecamac'],
+				['¿Que tipo de musica le gusta a Rafael?', 'el rock'],
+				['¿Cual es el color favorito de Rafael?', 'verde'],
+				['¿Le gustan los gatos a Rafael', 'si'],
+				['¿Que estudia Rafael?', 'ingenieria en software'],                                      
+				['¿Cual es la comida favorita de Rafael?', 'pambazos']						
+			],
+			pregunta, respuesta,
+			formuladas = 0,
+			acertadas = 0;
+
+
+		hazPregunta();
+
+
+		
+
+		document.getElementById('boton').addEventListener('click', function(){
+			var entrada = document.getElementById("dato").value;
+
+			if(entrada == respuesta){
+				acertadas++;
+			}
+
+			if(formuladas < 5){			
+				hazPregunta();			
+			}
+			else{						
+				muestraResultado();		
+			}
+		});
+
+
+	
+
+		function hazPregunta(){
+			var e;		
+
+			
+
+			e = preguntas.splice( numAleat(0, preguntas.length-1), 1 );
+			pregunta = e[0][0];			
+			respuesta = e[0][1];
+
+			document.getElementById('preg').innerHTML = pregunta;        
+			document.getElementById('dato').value = '';                  
+
+			formuladas++;
+		}
+
+
+		
+		function muestraResultado(){
+            var resultado;      
+
+			switch(acertadas){
+				case 0:
+					resultado = 'No acertaste ninguna eres mal amigo :-/';
+					break;
+				case 1:
+					resultado = 'una pregunta acertada, esperaba mas de ti :-)';
+					break;
+				case 2:
+					resultado = 'Solo 2 preguntas acertadas algo es algo.';
+					break;
+				case 3:
+					resultado = '3 de 5 almenos alguien si sabe un poco de mi.';
+					break;
+				case 4:
+					resultado = '4 de 5 eres garnde, todo un crak :-)';
+					break;
+				case 5:
+					resultado = 'acertaste todas, mejores amigos por siempre siiuuuu :-D';
+					break;
+			}
+
+            document.getElementById('resolucion').innerHTML = resultado;
+		}
+
+
+
+		function numAleat(min, max){
+			return Math.floor( Math.random() * (max - min + 1) ) + min;
+		}
+	</script>
+</body>
+</html>

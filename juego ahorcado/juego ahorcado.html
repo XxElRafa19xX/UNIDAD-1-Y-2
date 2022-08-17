@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" id="letra" placeholder="Escribe la letra">
+    <input type="button" id="boton" value="comprobar"> <br>
+    <div id="frase">
+        
+    </div>
+
+    <div id="vida">
+        La cantidad de vidas son: 4
+    </div>
+<script type="text/javascript" >
+    let palabras = Array("spiderman","superman","batman","ironman");
+    let palabraOc = "";//esta es donde va la palabra oculta
+    let palabraAdi = ""; //palabra donde el usuario va adivinar
+    let vidas = 4;
+    document.getElementById("boton").addEventListener("click",comprobar);//el addEventlistener este nos permitira añadirle a que escuche un evento que pasa sobre un elemento
+
+    iniciar();
+
+    function iniciar(){
+        
+        palabraOc=palabras[Math.floor(Math.random()*palabras.length)];//esta va indicar una posición alateoria donde la va arredondear o cerrandola para que tenga una posicion valida
+        
+        for(let i=0;i<palabraOc.length;i++){
+            palabraAdi=palabraAdi+"_ ";//este almacenara los guiones
+        }
+        document.getElementById("frase").innerHTML=palabraAdi;//cuando se llega a contener varios elementos se ocupa el innerHTML para obtener/mostrar algun contenido el atributo que se busca es value
+
+    }
+
+    function comprobar(){
+        let letra = document.getElementById("letra").value.toLowerCase();//toLoweCase va indicar que al valor lo transforme a minusculas
+        palabraOc = palabraOc.toLocaleLowerCase();//esta es una variable temporal para no modificar el array
+        let nuevo = "";
+
+        for (let i=0;i<palabraOc.length;i++){
+            if(letra==palabraOc[i]){
+                nuevo = nuevo + letra + " ";//este va indicar si el usuario le atino a la letra
+            }else{
+                nuevo = nuevo + palabraAdi[i*2] + " ";//este va indicar cuando no le atino a la letra quedandose en blanco
+                //[i*2] va estar multiplicando los espacios donde hay un "_" para no borrar la letra ya hecha
+            }
+
+        }
+        if(nuevo==palabraAdi){
+            vidas--;
+            document.getElementById("vida").innerHTML="La cantidad de vidas son:" + vidas;
+        }
+        palabraAdi = nuevo;
+        document.getElementById("frase").innerHTML=palabraAdi;
+
+        if(vidas==0){
+            alert("perdiste");
+        }
+        if(palabraAdi.search("_")==-1){
+            alert("ganaste");
+            //en esta parte donde se ocupa .search va a buscar el guion bajo pero va retornar un menos 1 donde le indicaremos que gano
+
+        }
+
+    }
+
+</script>
+</body>
+</html>

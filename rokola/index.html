@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Rokola</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="estilo.css">
+    <script src="https://kit.fontawesome.com/1b4749c273.js" crossorigin="anonymous"></script>
+<body>
+    
+    <div class="main">
+       
+
+        <div class="left">
+            <img id="track_image">
+            <div class="volume">
+
+            <p id="volume_show">90</p>
+            <i class="fa fa-volume-up" aria-hidden="true" id="volume_icon" onclick="mute_sound()"></i>
+            <input type="range" min="0" max="100" value="90" onchange="volume_change()" id="volume">
+        </div>
+       </div> 
+
+       <div class="right">
+            <div class="show_song_no">
+                <p id="present">1</p>
+                <p>/</p>
+                <p id="total">5</p>
+            </div>
+
+            <p id="tittle">tittle.mp3</p>
+            <p id="artist">Astist</p>
+
+            <div class="middle">
+                <button onclick="previus_song()" id="pre"><i class="fa fa-step-backward"aria-hidden="true"></i></button>
+                <button onclick="justplay()" id="play"><i class="fa fa-play" aria-hidden="true"></i></button>
+                <button onclick="next_song()" id="next"><i class="fa fa-step-forward"aria-hidden="true"></i></button>
+            </div>
+
+            <div class="duration">
+                <input type="range" min="0" max="100" value="0" id="duration_slider" onchange="change_duration()">
+            </div>
+            <button id="auto" onclick="autoplay_switch()">Deposita 5 pesitos</button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
